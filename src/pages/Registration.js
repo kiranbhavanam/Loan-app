@@ -1,13 +1,25 @@
 import {useState} from "react"
 import api from "../utils/axios"
+import formValidator from "../utils/formValidator"
+
  const Registration=()=>{
-    
     const [formData,setFormData]=useState({name:"",email:"",pass:""})
+    const [errors,setErrors]=useState({});
     const handleChange=(e)=>{
         setFormData({...formData,[e.target.name]:e.target.value})
+        //clear error on change
+        if(errors[e.target.name]){
+          setErrors((prev)=>({...prev,[e.target.name]:""}))
+        }
     }
     const handleSubmit= async (e)=>{
         e.preventDefault();
+        const validationErrors=formValidator(formData);
+        if(Object.keys(validationErrors).length>0){
+          setErrors(validationErrors);
+          
+        }
+        alert("form submitted successfully")
         try {
           const res=await api.post("/auth/register",formData)
           localStorage.setItem("token",res.data.token)
@@ -25,10 +37,12 @@ import api from "../utils/axios"
             console.log(error)
         }
     }
+    
     return(
+      <div className="min-h-screen flex justify-center items-center bg-gray-100">
         <form 
   onSubmit={handleSubmit} 
-  className="max-w-md mx-auto bg-white p-8 shadow-md rounded-lg space-y-6"
+  className=" w-3/5 max-w-lg bg-white p-8 shadow-md rounded-lg space-y-6"
 >
   <h2 className="text-2xl font-semibold text-gray-700 text-center">Register</h2>
   
@@ -39,8 +53,10 @@ import api from "../utils/axios"
       type="text" 
       name="name" 
       onChange={handleChange}
-      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
+      className={`w-full px-4 py-2 border ${errors.name?"border-red-500":"border-gray-300"}  rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none`}
+
     />
+    {errors.name&&<p className="text-red-500 text-sm mt-1">{errors.name}</p>}
   </div>
 
   <div>
@@ -50,8 +66,11 @@ import api from "../utils/axios"
       type="email" 
       name="email" 
       onChange={handleChange}
-      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
+      className={`w-full px-4 py-2 border ${
+        errors.email ? "border-red-500" : "border-gray-300"
+      } rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none`}
     />
+    {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
   </div>
 
   <div>
@@ -61,8 +80,11 @@ import api from "../utils/axios"
       type="password" 
       name="pass" 
       onChange={handleChange}
-      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
+      className={`w-full px-4 py-2 border ${
+        errors.pass ? "border-red-500" : "border-gray-300"
+      } rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none`}
     />
+    {errors.pass && <p className="text-red-500 text-sm mt-1">{errors.pass}</p>}
   </div>
 
   <button 
@@ -72,7 +94,7 @@ import api from "../utils/axios"
     Register
   </button>
 </form>
-
+</div>
     )
 }
 

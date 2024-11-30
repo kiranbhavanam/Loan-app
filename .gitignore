@@ -4,8 +4,6 @@
 /node_modules
 /.pnp
 .pnp.js
-package.json
-package-lock.json
 
 # testing
 /coverage
@@ -25,5 +23,10 @@ yarn-debug.log*
 yarn-error.log*
 
 postcss.config.js
+
+# Ignore package files
+package-lock.json
+package.json
+
 
 

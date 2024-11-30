@@ -11,7 +11,7 @@ function App() {
           <Route path="/register" element={<Registration/>}></Route>
         </Routes>
       </Router>
-      <h3 className="font-extrabold bg-red-600 text-yellow-600">hello there</h3>
+      {/* <h3 className="font-extrabold bg-red-600 text-yellow-600">hello there</h3> */}
     </div>
   );
 }
