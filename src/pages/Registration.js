@@ -1,4 +1,5 @@
 import {useState} from "react"
+import api from "../utils/axios"
  const Registration=()=>{
     
     const [formData,setFormData]=useState({name:"",email:"",pass:""})
@@ -8,12 +9,16 @@ import {useState} from "react"
     const handleSubmit= async (e)=>{
         e.preventDefault();
         try {
+          const res=await api.post("/auth/register",formData)
+          localStorage.setItem("token",res.data.token)
+          /*
+          Using fetch instead of axios
             const res=await fetch("http:/localhost:3000/auth/register",{
                 method:"POST",
                 headers:{"Content-Type":"application/json"},
                 body:{formData}
-
-            })
+              })
+              */
             //post request is sent to http server/
             //a token has to be generated.
         } catch (error) {
