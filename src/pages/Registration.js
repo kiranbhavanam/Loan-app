@@ -1,6 +1,7 @@
 import {useState} from "react"
 import api from "../utils/axios"
 import formValidator from "../utils/formValidator"
+import FormInput from "../utils/FormInput"
 
  const Registration=()=>{
     const [formData,setFormData]=useState({name:"",email:"",pass:""})
@@ -12,12 +13,14 @@ import formValidator from "../utils/formValidator"
           setErrors((prev)=>({...prev,[e.target.name]:""}))
         }
     }
+
+    
     const handleSubmit= async (e)=>{
         e.preventDefault();
         const validationErrors=formValidator(formData);
+        // console.log("errors: "+JSON.stringify(errors)+"Validation errors: "+JSON.stringify(validationErrors))
         if(Object.keys(validationErrors).length>0){
-          setErrors(validationErrors);
-          
+          return setErrors(validationErrors);
         }
         alert("form submitted successfully")
         try {
@@ -45,7 +48,7 @@ import formValidator from "../utils/formValidator"
   className=" w-3/5 max-w-lg bg-white p-8 shadow-md rounded-lg space-y-6"
 >
   <h2 className="text-2xl font-semibold text-gray-700 text-center">Register</h2>
-  
+  {/*
   <div>
     <label htmlFor="name" className="block mx-2 text-start text-sm font-medium text-gray-600">Name</label>
     <input 
@@ -86,7 +89,34 @@ import formValidator from "../utils/formValidator"
     />
     {errors.pass && <p className="text-red-500 text-sm mt-1">{errors.pass}</p>}
   </div>
+  using FormInput custom comonent.
+  */}
+  <FormInput
+  label={"Name"}
+  name={"name"}
+  type={"text"}
+  placeholder={"Name"}
+    onChange={handleChange}
+    error={errors.name}
+  ></FormInput>
 
+<FormInput
+  label={"Email"}
+  name={"email"}
+  type={"email"}
+  placeholder={"Email"}
+    onChange={handleChange}
+    error={errors.email}
+  ></FormInput>
+
+<FormInput
+  label={"Password"}
+  name={"pass"}
+  type={"password"}
+  placeholder={"password"}
+    onChange={handleChange}
+    error={errors.pass}
+  ></FormInput>
   <button 
     type="submit" 
     className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300 font-medium"
