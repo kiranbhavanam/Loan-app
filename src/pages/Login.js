@@ -12,7 +12,7 @@ const Login=()=>{
         e.preventDefault();
         alert("Login success")
         try{
-            const res=await api.post('auth/login',formData);
+            const res=await api.post('/auth/login',formData);
             localStorage.setItem("token",res.data.token);
         }
         catch(err){
