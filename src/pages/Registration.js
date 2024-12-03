@@ -24,7 +24,8 @@ import FormInput from "../utils/FormInput"
         }
         alert("form submitted successfully")
         try {
-          const res=await api.post("/auth/register",formData)
+          const res=await api.post("/register",formData)
+          console.log(res.data);
           localStorage.setItem("token",res.data.token)
           /*
           Using fetch instead of axios
