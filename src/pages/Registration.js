@@ -22,11 +22,11 @@ import FormInput from "../utils/FormInput"
         if(Object.keys(validationErrors).length>0){
           return setErrors(validationErrors);
         }
-        alert("form submitted successfully")
         try {
           const res=await api.post("/register",formData)
-          console.log(res.data);
           localStorage.setItem("token",res.data.token)
+          alert("form submitted successfully")
+          console.log(localStorage.getItem("token"));
           /*
           Using fetch instead of axios
             const res=await fetch("http:/localhost:3000/auth/register",{
@@ -38,7 +38,9 @@ import FormInput from "../utils/FormInput"
             //post request is sent to http server/
             //a token has to be generated.
         } catch (error) {
-            console.log(error)
+            if(error.response&&error.response.status===401)
+                alert("User already registered in the database, kindly login.")
+            
         }
     }
     
