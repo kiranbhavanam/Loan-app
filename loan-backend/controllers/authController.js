@@ -9,7 +9,8 @@ exports.register=(req,res)=>{
     const newUser={name,email,pass};
     users.push(newUser);
     //creating token 
-
+    const token=require("../utils/jwt").generateToken({email});
+    res.status(201).json({token})
     // res.json({token});
 }
 
@@ -20,6 +21,8 @@ exports.login=(req,res)=>{
         res.status(401).json({msg:"Invalid credentials"});
     }
  //generate token   
+    const token=require("../utils/jwt").generateToken({email});
+    res.status(201).json({token})
 }
 
 exports.getAllUsers=(req,res)=>{
