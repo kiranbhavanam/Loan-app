@@ -10,7 +10,7 @@ exports.register=(req,res)=>{
     users.push(newUser);
     //creating token 
     const token=require("../utils/jwt").generateToken({email});
-    res.status(201).json({token})
+    res.status(201).json({token,msg:"user account registered succesfully"})
     // res.json({token});
 }
 
@@ -24,7 +24,9 @@ exports.login=(req,res)=>{
     const token=require("../utils/jwt").generateToken({email});
     res.status(201).json({token})
 }
-
+// exports.getLoans=(req,res)=>{
+//     res.json({amount:1000,reason:"personal",status:"success"});
+// }
 exports.getAllUsers=(req,res)=>{
     res.json(users)
 }
