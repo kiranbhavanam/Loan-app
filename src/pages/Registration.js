@@ -24,6 +24,8 @@ import FormInput from "../utils/FormInput"
         }
         try {
           const res=await api.post("/register",formData)
+          if(res.status===400)
+              alert("User Already Exists ,please login.")
           localStorage.setItem("token",res.data.token)
           alert("form submitted successfully")
           console.log(localStorage.getItem("token"));
@@ -38,9 +40,17 @@ import FormInput from "../utils/FormInput"
             //post request is sent to http server/
             //a token has to be generated.
         } catch (error) {
-            if(error.response&&error.response.status===401)
-                alert("User already registered in the database, kindly login.")
-            
+          if (error.response) {
+              if (error.response.status === 400) {
+                  alert("User already exists, please login.");
+              } else if (error.response.status === 401) {
+                  alert("Unauthorized: Please check your credentials.");
+              } else {
+                  alert(`An error occurred: ${error.response.statusText}`);
+              }
+          } else {
+              alert("An unexpected error occurred.");
+          }
         }
     }
     

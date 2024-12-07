@@ -2,15 +2,16 @@ import React,{useState,useEffect} from "react";
 import api from "../utils/axios";
 
 const Dashboard=()=>{
-const [loans,setLoans]=useState([]);
+// const [loans,setLoans]=useState([]);
 
-useEffect(()=>{
-    const fetchLoans=async ()=>{
-        const res=await api.get("/loans")
-        setLoans(res.data)
-    }
-    fetchLoans();
-},[])
+// useEffect(()=>{
+//     const fetchLoans=async ()=>{
+//         const res=await api.get("/loans")
+//         console.log(await res.json())
+//         setLoans(res.json().data)
+//     }
+//     fetchLoans();
+// },[])
 const [users,setUsers]=useState([]);
 
 useEffect(()=>{
@@ -22,7 +23,7 @@ useEffect(()=>{
 },[])
 return(
     <div className="min-h-screen flex justify-center items-center ">
-        <div className="block">
+        {/* <div className="block">
         <h3>Loans of user:</h3>
         {loans.map((loan)=>(
             <div key={loan.id}>
@@ -33,7 +34,7 @@ return(
 
 )
 
-)}</div>
+)}</div> */}
 <div>
     <h3>users List:</h3>
     {users.map((user)=>(
