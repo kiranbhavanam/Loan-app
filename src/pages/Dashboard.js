@@ -36,11 +36,11 @@ return(
 
 )}</div> */}
 <div>
-    <h3>users List:</h3>
+    <h3 className="font-semibold text-xl  border-b-2 border-black">Users List:</h3>
     {users.map((user)=>(
-            <div key={user.email}>
-                <p>Name: {user.name}</p>
-                <p>Mail: {user.email}</p>
+            <div className="flex justify-center items-center text-center gap-8" key={user.email}>
+                <p className="font-thin text-xl text-gray-900">Name: {user.name}</p>
+                <p className="font-thin text-xl text-gray-900">Mail: {user.email}</p>
             </div>))}
 
             </div>
