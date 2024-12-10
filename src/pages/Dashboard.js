@@ -17,7 +17,7 @@ const [users,setUsers]=useState([]);
 useEffect(()=>{
     const fetchUsers=async ()=>{
         const res=await api.get("/users")
-        if(res.status===400){
+        if(res.status===401){
             alert("please login to view dashboard");
         }
         setUsers(res.data)
