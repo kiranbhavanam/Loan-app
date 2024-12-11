@@ -16,11 +16,21 @@ const [users,setUsers]=useState([]);
 
 useEffect(()=>{
     const fetchUsers=async ()=>{
-        const res=await api.get("/users")
-        if(res.status===401){
-            alert("please login to view dashboard");
+        try {
+            const res=await api.get("/users")
+            if(res.status===200){
+                console.log("response at dashboard.js: "+res);
+                setUsers(res.data)
+            } 
+        } catch (error) {
+           
+            if (error.response && error.response.status === 401) {
+                alert("Please log in to view the dashboard.");
+            } else {
+                console.error("Error fetching users:", error);
+            }
         }
-        setUsers(res.data)
+        
     }
     fetchUsers();
 },[])
