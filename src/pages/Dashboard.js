@@ -14,6 +14,7 @@ const Dashboard=()=>{
 //     fetchLoans();
 // },[])
 const [users,setUsers]=useState([]);
+const [loans,setLoans]=useState([]);
 const navigate=useNavigate();
 
 useEffect(()=>{
@@ -46,6 +47,9 @@ useEffect(()=>{
         
     }
     fetchUsers();
+    const fetchLoans=()=>{
+        
+    }
 },[navigate])
 return(
     <div className="min-h-screen flex justify-center items-center ">
