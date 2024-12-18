@@ -62,7 +62,7 @@ useEffect(()=>{
     fetchLoans();
 },[navigate])
 return(
-    <div className="min-h-screen flex justify-center items-center ">
+    <div className="min-h-screen flex justify-center items-center gap-6 ">
         {/* <div className="block">
         <h3>Loans of user:</h3>
         {loans.map((loan)=>(
@@ -90,8 +90,8 @@ return(
     <h3 className="font-semibold text-xl  border-b-2 border-black">Loans List:</h3>
     {loans.length>0?(loans.map((loan)=>(
             <div className="flex justify-center items-center text-center gap-8" key={loans.amount}>
-                <p className="font-thin text-xl text-gray-900">Name: {loan.amount}</p>
-                <p className="font-thin text-xl text-gray-900">Mail: {loan.reason}</p>
+                <p className="font-thin text-xl text-gray-900">Loan Amount: {loan.amount}</p>
+                <p className="font-thin text-xl text-gray-900">Reason: {loan.reason}</p>
             </div>)))
 
             :<p>No loans</p>}

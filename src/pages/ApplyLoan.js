@@ -11,10 +11,10 @@ const ApplyLoan=()=>{
     const handleSubmit=async (e)=>{
         e.preventDefault();
         try {
-            const res= await api.post("/auth/apply-loan",formData);
-            setMessage(res.data.message)
+            const res= await api.post("/apply-loan",formData);
+            setMessage(res.data.msg)
         } catch (error) {
-            setMessage(error.message?.data.message||"Failed to fetch loans");
+            setMessage("Failed to apply loan");
             console.log(error)
         }
 
