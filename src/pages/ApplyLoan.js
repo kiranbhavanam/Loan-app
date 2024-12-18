@@ -46,6 +46,7 @@ const ApplyLoan=()=>{
                 <button type="submit"  disabled={isFormInValid}
                 className={`w-full py-2 ${isFormInValid?"bg-blue-400 ":" bg-blue-600 hover:bg-blue-700"} text-white rounded-lg font-medium  transition  duration-300`}>
                     Apply</button>
+                    {message&&<p >{message}</p>}
         </form>
 
         </div>

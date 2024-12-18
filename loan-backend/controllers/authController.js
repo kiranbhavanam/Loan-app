@@ -1,5 +1,6 @@
 
 const users=[];
+const loans=[];
 exports.register=(req,res)=>{
     const {name,email,pass}=req.body;
     const userExists=users.find(user=>user.email===email);
@@ -29,4 +30,16 @@ exports.login=(req,res)=>{
 // }
 exports.getAllUsers=(req,res)=>{
     res.json(users)
+}
+
+exports.applyLoan=(req,res)=>{
+    const {amount,reason}=req.body;
+    const {email}=req.user;
+    const newLoan={email,amount,reason,status:"Pending",date:new Date()};
+    loans.push(newLoan);
+    res.status(201).json({msg:"loan application submitted successfully",loan:newLoan})
+
+}
+exports.getLoans=(req,res)=>{
+    res.json(loans);
 }
