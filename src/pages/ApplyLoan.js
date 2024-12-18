@@ -3,6 +3,7 @@ import api from "../utils/axios";
 import FormInput from "../utils/FormInput";
 const ApplyLoan=()=>{
     const [formData,setFormData]=useState({amount:"",reason:""})
+    const [message,setMessage]=useState('')
     const handleChange=(e)=>{
             setFormData({...formData,[e.target.name]:e.target.value})
     }
@@ -10,8 +11,10 @@ const ApplyLoan=()=>{
     const handleSubmit=async (e)=>{
         e.preventDefault();
         try {
-            await api.post("/auth/apply-loan",formData);
+            const res= await api.post("/auth/apply-loan",formData);
+            setMessage(res.data.message)
         } catch (error) {
+            setMessage(error.message?.data.message||"Failed to fetch loans");
             console.log(error)
         }
 

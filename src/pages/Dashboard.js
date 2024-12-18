@@ -18,16 +18,17 @@ const [loans,setLoans]=useState([]);
 const navigate=useNavigate();
 
 useEffect(()=>{
-    const fetchUsers=async ()=>{
-        const token=localStorage.getItem("token")
-        if(!token){
-            if(window.location.pathname!=="/login"){
+    const token=localStorage.getItem("token")
+    if(!token){
+        if(window.location.pathname!=="/login"){
 
-                alert("Please log in to view the dashboard.");
-                navigate("/login")
-            }
-            return;
+            alert("Please log in to view the dashboard.");
+            navigate("/login")
         }
+        return;
+    }
+    const fetchUsers=async ()=>{
+       
         try {
             const res=await api.get("/users")
             if(res.status===200){
@@ -46,10 +47,19 @@ useEffect(()=>{
         }
         
     }
-    fetchUsers();
-    const fetchLoans=()=>{
-        
+    const fetchLoans=async ()=>{
+        try {
+            const res=await api.get("/loans");
+            if(res.status===200){
+                setLoans(res.data)
+            }
+            
+        } catch (error) {
+            console.log("error fetching loans: "+error);
+        }
     }
+    fetchUsers();
+    fetchUsers();
 },[navigate])
 return(
     <div className="min-h-screen flex justify-center items-center ">
@@ -65,6 +75,7 @@ return(
 )
 
 )}</div> */}
+
 <div>
     <h3 className="font-semibold text-xl  border-b-2 border-black">Users List:</h3>
     {users.length>0?(users.map((user)=>(
@@ -74,7 +85,17 @@ return(
             </div>)))
 
             :<p>No user found</p>}
-            </div>
+</div>
+<div>
+    <h3 className="font-semibold text-xl  border-b-2 border-black">Loans List:</h3>
+    {loans.length>0?(loans.map((loan)=>(
+            <div className="flex justify-center items-center text-center gap-8" key={loans.amount}>
+                <p className="font-thin text-xl text-gray-900">Name: {loan.amount}</p>
+                <p className="font-thin text-xl text-gray-900">Mail: {loan.reason}</p>
+            </div>)))
+
+            :<p>No loans</p>}
+</div>
     </div>
 
 )
