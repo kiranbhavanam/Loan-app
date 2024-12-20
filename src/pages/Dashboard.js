@@ -62,7 +62,7 @@ useEffect(()=>{
     fetchLoans();
 },[navigate])
 return(
-    <div className="min-h-screen flex justify-center items-center gap-6 ">
+    <div className="min-h-screen flex  flex-wrap overflow-hidden justify-center items-center gap-6 mt-2">
         {/* <div className="block">
         <h3>Loans of user:</h3>
         {loans.map((loan)=>(
@@ -79,20 +79,46 @@ return(
 <div>
     <h3 className="font-semibold text-xl  border-b-2 border-black">Users List:</h3>
     {users.length>0?(users.map((user)=>(
-            <div className="flex justify-center items-center text-center gap-8" key={user.email}>
-                <p className="font-thin text-xl text-gray-900">Name: {user.name}</p>
-                <p className="font-thin text-xl text-gray-900">Mail: {user.email}</p>
-            </div>)))
+            <div
+            className="w-full max-w-md bg-white shadow-md rounded-lg p-6 flex flex-col items-start justify-start"
+            key={user.email}
+        >
+            <h4 className="text-lg font-semibold text-gray-800 mb-2">Name</h4>
+            <p className="text-gray-700 text-base mb-4">{user.name}</p>
+            <h4 className="text-lg font-semibold text-gray-800 mb-2">Email</h4>
+            <p className="text-gray-700 text-base">{user.email}</p>
+        </div>)))
 
             :<p>No user found</p>}
 </div>
-<div>
+<div >
     <h3 className="font-semibold text-xl  border-b-2 border-black">Loans List:</h3>
+    {console.log("loan data from responsse: "+JSON.stringify(loans))}
+
     {loans.length>0?(loans.map((loan)=>(
-            <div className="flex justify-center items-center text-center gap-8" key={loans.amount}>
-                <p className="font-thin text-xl text-gray-900">Loan Amount: {loan.amount}</p>
-                <p className="font-thin text-xl text-gray-900">Reason: {loan.reason}</p>
-            </div>)))
+                        
+            <div
+            className="w-full max-w-md bg-white shadow-md rounded-lg p-6 flex flex-col items-start justify-start"
+            key={loan.email}
+        >
+            <div className="w-full">
+            <h4 className="text-lg font-semibold text-gray-800 mb-2 inline-block w-1/2 ">Amount</h4>
+            <p className="text-gray-700 text-base inline-block mb-4">{loan.amount}</p>
+            </div>
+            <div className="w-full">
+            <h4 className="text-lg font-semibold text-gray-800 mb-2 inline-block w-1/2 ">Reason</h4>
+            <p className="text-gray-700 text-base inline-block">{loan.reason}</p>
+           </div>
+            <div className="w-full">
+            <h4 className="text-lg font-semibold text-gray-800 mb-2 inline-block w-1/2 ">Status: </h4>
+            <p className="text-gray-700 text-base inline-block ">{loan.status}</p>
+            </div>
+            <div className="w-full">
+
+            <h4 className="text-lg font-semibold text-gray-800 mb-2 inline-block ">Date Applied: </h4>
+            <p className="text-gray-700 text-base ">{loan.date}</p>
+            </div>
+        </div>)))
 
             :<p>No loans</p>}
 </div>
