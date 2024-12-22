@@ -62,7 +62,7 @@ useEffect(()=>{
     fetchLoans();
 },[navigate])
 return(
-    <div className="min-h-screen flex  flex-wrap overflow-hidden justify-center items-center gap-6 mt-2">
+    <div className=" flex justify-center items-start gap-6 mt-2 relative top-[80px]   " id="dashboard">
         {/* <div className="block">
         <h3>Loans of user:</h3>
         {loans.map((loan)=>(
@@ -80,7 +80,7 @@ return(
     <h3 className="font-semibold text-xl  border-b-2 border-black">Users List:</h3>
     {users.length>0?(users.map((user)=>(
             <div
-            className="w-full max-w-md bg-white shadow-md rounded-lg p-6 flex flex-col items-start justify-start"
+            className="w-full max-w-md bg-white shadow-md rounded-lg p-6 flex flex-col items-start justify-start mb-2"
             key={user.email}
         >
             <h4 className="text-lg font-semibold text-gray-800 mb-2">Name</h4>
@@ -98,18 +98,18 @@ return(
     {loans.length>0?(loans.map((loan)=>(
                         
             <div
-            className="w-full max-w-md bg-white shadow-md rounded-lg p-6 flex flex-col items-start justify-start"
+            className="w-full max-w-md bg-white shadow-md rounded-lg p-6 mb-2 flex flex-col items-start justify-start"
             key={loan.email}
         >
-            <div className="w-full">
-            <h4 className="text-lg font-semibold text-gray-800 mb-2 inline-block w-1/2 ">Amount</h4>
-            <p className="text-gray-700 text-base inline-block mb-4">{loan.amount}</p>
+            <div className=" bg-blue-300 w-full flex items-center justify-around">
+            <h4 className="text-lg font-semibold text-gray-800 mb-2  ">Amount</h4>
+            <p className="text-gray-700 text-base mb-4">{loan.amount}</p>
             </div>
-            <div className="w-full">
+            <div className="w-full flex items-center justify-around">
             <h4 className="text-lg font-semibold text-gray-800 mb-2 inline-block w-1/2 ">Reason</h4>
             <p className="text-gray-700 text-base inline-block">{loan.reason}</p>
            </div>
-            <div className="w-full">
+            <div className="bg-blue-300 w-full flex items-center justify-around">
             <h4 className="text-lg font-semibold text-gray-800 mb-2 inline-block w-1/2 ">Status: </h4>
             <p className="text-gray-700 text-base inline-block ">{loan.status}</p>
             </div>
