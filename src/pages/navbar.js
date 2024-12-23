@@ -1,12 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
+import image from "../utils/image.png"
 const Navbar=()=>{
     const navigate=useNavigate();
     return(
         <div className="nav">
             <div className="image">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjvMYR9SR0gxupa9LY7BFB1mMctNd9g2Pcdg&s" alt=""/>
+                <img src={image} alt=""/>
             </div>
             <ul className="list">
             <button onClick={()=>navigate("/register")} >Register</button>

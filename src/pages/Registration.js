@@ -55,10 +55,10 @@ import FormInput from "../utils/FormInput"
     }
     
     return(
-      <div className=" registration min-h-screen relative pt-[80px]  flex justify-center items-center bg-gray-100">
+      <div className=" registration min-h-screen  relative pt-[80px]  flex justify-center items-center">
         <form 
   onSubmit={handleSubmit} 
-  className=" w-3/5 max-w-lg bg-white p-8 shadow-md rounded-lg space-y-6"
+  className=" w-2/6 bg-white p-8 shadow-md rounded-lg space-y-6"
 >
   <h2 className="text-2xl font-semibold text-gray-700 text-center">Register</h2>
   {/*

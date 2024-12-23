@@ -5,15 +5,20 @@ html, body {
   height: 100%;
   margin: 0;
   /* overflow: auto; Prevent scrolling */
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(227,47,118,1) 35%, rgba(0,212,255,1) 100%);
 }
 #dashboard{
   overflow: auto;
 }
+/* .registration,.registration>form>button,.nav{
+  background: rgb(2,0,36);
+background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(227,47,118,1) 35%, rgba(0,212,255,1) 100%);
+} */
 .nav{
   position: fixed;
   top:0;
   width:100%;
-  background-color:rgba(255,255,255);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -21,10 +26,22 @@ html, body {
   z-index:1000;
 }
 .image {
-  width:85px;
+  /* width:85px;
   height: fit-content;
   object-fit: contain;
-  opacity: 0.9;
+  opacity: 0.9; */
+    width: 70px; /* Scale up slightly since it's 20x20 */
+    height: 70px;
+    background: linear-gradient(180deg, rgb(243, 242, 255) 4%, rgba(21,197,242,1) 38%, rgba(0,212,255,1) 100%);
+    -webkit-mask-image: url('./utils/image.png');
+    mask-image: url('./utils/image.png');
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+  
+  
+  
 }
 .list{
 
@@ -34,7 +51,7 @@ html, body {
 }
 .list>button{
   color:white;
-  background-color: #1E50DA;
+  background-color: #014f73;
   font-weight:lighter;
   padding:6px 12px;
   border-radius: 5%;
@@ -43,9 +60,11 @@ html, body {
   cursor: pointer;
   display: inline-block;
   text-align: center;
-
+  transition: background-color 0.3s ease;
+  
 }
 .list>button:hover{
   opacity: 0.9;
   transition: 0.2ms;
+  background-color: #0288d1;
 }

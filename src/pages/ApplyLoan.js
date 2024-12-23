@@ -20,9 +20,9 @@ const ApplyLoan=()=>{
 
     }
     return(
-        <div className=" min-h-screen flex justify-center items-center bg-gray-100">
+        <div className=" min-h-screen flex justify-center items-center ">
             <form
-            className="w-3/5 max-w-lg p-8 bg-white shadow-md rounded-lg space-y-6"
+            className="w-2/6 max-w-lg p-8 bg-white shadow-md rounded-lg space-y-6"
              onSubmit={handleSubmit}>
                 <FormInput
                 label={"Amount"}
