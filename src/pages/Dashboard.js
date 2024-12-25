@@ -80,7 +80,7 @@ return(
     <h3 className="font-semibold text-xl  border-b-2 border-black">Users List:</h3>
     {users.length>0?(users.map((user)=>(
             <div
-            className="w-full max-w-md shadow-md rounded-lg p-6 flex flex-col items-start justify-start mb-2"
+            className="w-full max-w-md shadow-md rounded-lg p-6 flex flex-col items-start justify-start mb-2 bg-white"
             key={user.email}
         >
             <h4 className="text-lg font-semibold text-gray-800 mb-2">Name</h4>
